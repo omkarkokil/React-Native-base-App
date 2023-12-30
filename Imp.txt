@@ -1,0 +1,22 @@
+Heroicon :- for react native icons
+
+This is used to get Types to react-native tailwind also it must add in global.d.ts file : -
+/// <reference types="nativewind/types" />
+
+//useNaviagtion implementation for navigate within screen : -
+//import the NavigationProp 
+import { NavigationProp } from "@react-navigation/native"
+
+
+// Add the screen name which you want to navigate
+export type ScreenNames = ["Login", "Register"] // type these manually
+
+//This type will goes to the app.ts createNativeStackNavigator() function
+export type RootStackNavigatorParamList = Record<ScreenNames[number], undefined>
+
+//This type will goes to each useNaviagtion hook
+export type RootScreenNavigatorProps = NavigationProp<RootStackNavigatorParamList>
+
+
+//To get the first screen or initial screen when open app use : -
+ <Stack.Navigator initialRouteName="Login">

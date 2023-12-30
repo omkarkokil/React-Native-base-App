@@ -2,11 +2,11 @@ import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
 import { Pressable, Text, TouchableOpacity, View } from "react-native";
 import InputBox from "../../components/InputBox";
-import Test from "../../components/Test";
 import { RootScreenNavigatorProps } from "../../global";
 
-const Register = () => {
+const Login = () => {
   const navigation = useNavigation<RootScreenNavigatorProps>();
+
   const [inputs, setInputs] = useState({
     name: "",
     email: "",
@@ -22,8 +22,7 @@ const Register = () => {
 
   return (
     <View className="flex h-screen w-full items-center justify-center">
-      <Text className="text-3xl font-semibold">Register</Text>
-      <Test />
+      <Text className="text-3xl font-semibold">Login </Text>
       <View className="my-4 space-y-2 w-[70%]">
         <InputBox
           name={"name"}
@@ -47,17 +46,23 @@ const Register = () => {
         />
         <Pressable className="bg-sky-400 p-2 max-w-[140] rounded-md !text-white ">
           <Text className="text-white text-center font-bold  w-max">
-            Register Account
+            Login Account
           </Text>
         </Pressable>
-        <Text>Aleady have an account ? </Text>
-        <TouchableOpacity onPress={() => navigation.navigate("Login")}>
-          <Text>Login</Text>
+
+        <Text>Not have an acccount</Text>
+        <TouchableOpacity
+          onPress={() => {
+            navigation?.navigate("Register");
+          }}
+        >
+          <Text>Register</Text>
         </TouchableOpacity>
-        <Text>{`${inputs.name} ${inputs.email} ${inputs.password}`}</Text>
+
+        {/* <Text>{` ${inputs.email} ${inputs.password}`}</Text> */}
       </View>
     </View>
   );
 };
 
-export default Register;
+export default Login;
